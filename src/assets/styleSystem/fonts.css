@@ -1,0 +1,28 @@
+@font-face {
+  font-family: "Amatic";
+  src: url(./fonts/AmaticSC-Bold.ttf);
+  font-weight : bold;
+}
+
+@font-face {
+  font-family: "Amatic";
+  src: url(./fonts/AmaticSC-Regular.ttf);
+  font-weight : normal;
+}
+@font-face {
+  font-family: "Source";
+  src: url(./fonts/SourceSansPro-Regular.ttf);
+  font-weight : normal;
+}
+@font-face {
+  font-family: "Source";
+  src: url(./fonts/SourceSansPro-Italic.ttf);
+  font-style : italic;
+}
+
+:root {
+    --title : bold 3rem "Amatic", serif;
+    --subTitle : normal 1.2rem "Amatic", serif;
+    --text : 1rem "Source", sans-serif;
+    --information : italic 1rem "Source", sans-serif;
+}
