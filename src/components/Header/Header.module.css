@@ -2,8 +2,8 @@
 @import '../../assets/styleSystem/fonts.css';
 
 .wrapper {
-    
-    height: 15vh;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -11,9 +11,24 @@
     background-color: var(--background);
     border-bottom: 3px solid var(--yellowCoopalim) ;
 }
+.wrapper div{
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    width : 7rem;
+    height: 100%;
+}
+
+.wrapper div:hover{
+    border-block: 4px solid var(--redCoopalim);
+    border-top-style : 0;
+}
+
 
 .link{
     font : var(--text);
     color : var(--redCoopalim);
     text-decoration : none;
+    text-align: center;
+    line-height: 100%;
 }

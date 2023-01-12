@@ -1,38 +1,39 @@
 import React from 'react'
-import { useCustomFrom } from './CustomLoginForm';
-import Field from '../../components/Field';
+import styles from './Login.module.css'
+
+import { useCustomForm } from './CustomLoginForm';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LoginSchema as schema } from '../../assets/pattern/formPattern';
+
+import InputField from '../Atoms/InputField/InputField';
+import PasswordInputField from '../Atoms/PasswordInputField/PasswordInputField';
+import ButtonField from '../Atoms/ButtonField/ButtonField';
+import TitleField from '../Atoms/TitleField/TitleField';
 
 
 
 const Login = () => {
 
-    const {register, errors, handleSubmit, onSubmit, handleChange} = useCustomFrom({
-        defaultValues : { login : 'Alex', password : '1234abCD&$' },
-        resolver      : yupResolver(schema)
+    const { register,  handleSubmit, onSubmit, errors, handleChange } = useCustomForm({
+        defaultValues: { login: 'Alex', password: '1234abCD&$' },
+        resolver: yupResolver(schema)
     })
-
-    
-    const fieldsGroup = [
-        { field: "login", label: "Login", type: "text"},
-        { field: "password", label: "Mot de passe", type: "password"},
-    ]
-
     
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            {fieldsGroup.map((fields,k) => 
-                <Field
-                        key={k}
-                        fields={fields}
-                        register={register}
-                        errors={errors}
-                        handleChange={handleChange}
-                />
-            )}
-            <input type="submit" value="envoyer"/>
-        </form>
+        <>
+            <TitleField label="Identification" />
+            <section className={styles.section}>
+                <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+                    <InputField label='Login :' register={register} handleChange={handleChange} field="login" error={errors.login} tooltipLabel="Nom d'utilisateur"/>
+                    {errors?.login?.message && <p className={styles.error}>{errors?.login?.message}</p>}
+
+                    <PasswordInputField label='Mot de passe :' register={register} field="password" error={errors.password}/>
+                    {errors?.password?.message && <p className={styles.error}>{errors?.password?.message}</p>}
+
+                    <ButtonField type="submit" label="Envoyer" className={styles.button}/>
+                </form>
+            </section>
+        </>
     )
 }
 

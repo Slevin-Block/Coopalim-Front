@@ -11,9 +11,12 @@ const Header = () => {
     return (
         <>
             <nav className={styles.wrapper}>
-                <Link className={styles.link} to='/'>Home</Link>
-                {isLogged ? <Link className={styles.link} onClick={logout} >Se déconnecter</Link> :
-                            <Link className={styles.link} to='/login'>Se connecter</Link>}
+                <div><Link className={styles.link} to='/'>Home</Link></div>
+                {isLogged ? <>
+                                <div><Link className={styles.link} to='/calendar' >Planning</Link></div>
+                                <div><Link className={styles.link} onClick={logout} >Se déconnecter</Link></div>
+                            </> :
+                            <div><Link className={styles.link} to='/login'>Se connecter</Link></div>}
             </nav>
         </>
     )

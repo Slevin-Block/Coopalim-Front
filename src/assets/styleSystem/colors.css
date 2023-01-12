@@ -1,6 +1,6 @@
 :root {
     --primary : #8FB54E; /* Vert Coopalim */
-	--secondary : #4D4D4D; /*Vert Prairie*/
+	--secondary : #BCD76C; /*Vert Prairie*/
     --background : #fbfbf9; /* Blanc cassé */
     --onBackground : #C8C9C8; /* Blanc cassé plus sombre */
     --text : #4D4D4D; /* Gris Coopalim */
@@ -9,4 +9,6 @@
     --blueCoopalim : #0092B4; /* Bleu */
     --yellowCoopalim : #FEC700; /* Jaune */
     --redCoopalim : #E94E28; /*Rouge orangé*/
+    
+    --redError : #ff3333; /*Rouge error*/
 }

@@ -25,4 +25,7 @@
     --subTitle : normal 1.2rem "Amatic", serif;
     --text : 1rem "Source", sans-serif;
     --information : italic 1rem "Source", sans-serif;
+    --error : italic 1rem "Source", sans-serif;
+    --field : 0.9rem "Source", sans-serif;
+    --labelField : normal 0.9rem "Source", sans-serif;
 }

@@ -5,9 +5,8 @@ import { useRecoilState } from 'recoil';
 import { sessionState } from '../../Providers/session';
 import { login } from '../../functions/connection';
 
-export const useCustomFrom = (params) => {
+export const useCustomForm = (params) => {
     const navigate = useNavigate();
-    const [, setRender] = useState()
     const {register, handleSubmit, formState : {errors}} = useForm(params)
     const [, setSession] = useRecoilState(sessionState)
 
@@ -20,11 +19,5 @@ export const useCustomFrom = (params) => {
             console.log("identifiaction error")
         }
     }
-    const handleChange = (e) => {
-        if (errors[e.target.name]?.message !== undefined){
-            delete errors[e.target.name]?.message
-            setRender("")
-        }
-    }
-    return {register, errors, handleSubmit, onSubmit, handleChange}
+    return {register, errors, handleSubmit, onSubmit}
 }

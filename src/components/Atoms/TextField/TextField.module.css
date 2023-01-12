@@ -1,0 +1,6 @@
+@import '../../../assets/styleSystem/colors.css';
+@import '../../../assets/styleSystem/fonts.css';
+
+.p{
+    font : var(--text);
+}

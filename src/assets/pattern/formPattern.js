@@ -3,14 +3,27 @@ import * as yup from "yup";
 
 export const LoginSchema = yup.object({
     login: yup
-        .string('Nom incorrect.')
-        .matches(/^[\w -]{3,}$/, 'Nom incorrect.')
-        .required('Nom obligatoire.'),
+        .string()
+        .required('Veuillez renseigner votre nom d\'utilisateur.')
+        .matches(/^[\w -]{3,}$/, "N'utilisez que des lettres, 3 minimum"),
     password: yup
         .string()
-        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/, "Mot de passe incorrect.")
+        .required('Veuillez renseigner votre mot de passe.')
+        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/, "Format de mot de passe incorrect."),
+}).required()
+
+export const TaskSchema = yup.object({
+    day: yup
+        .date()
+        .required('Nom obligatoire.'),
+    startTime: yup
+        .date()
+        .required('Nom obligatoire.'),
+    endTime: yup
+        .date()
         .required("Mot de passe requis")
 }).required()
+
 
 
 export const GlobalSchema = yup.object({

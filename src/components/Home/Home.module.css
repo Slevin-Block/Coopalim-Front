@@ -1,22 +1,14 @@
 @import '../../assets/styleSystem/colors.css';
 @import '../../assets/styleSystem/fonts.css';
 
-.wrapper {
+.section {
     display : flex;
     flex-direction: column;
     align-items : center;
-    justify-content: center;
     height : 85vh;
-    width : 375px;
+    width : 80vw;
 }
 
-.title {
-    font : var(--title);
-    color : var(--blueCoopalim);
-    height : 10%;
-    text-align: center;
-    width : inherit;
-}
 
 .core{
     color : var(--text) ;
