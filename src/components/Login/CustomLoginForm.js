@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form"
 import { useRecoilState } from 'recoil';
-import { sessionState } from '../../Providers/session';
-import { login } from '../../functions/connection';
+import { sessionState } from '../../global/Providers/session';
+import { login } from '../../global/functions/connection';
 
 export const useCustomForm = (params) => {
     const navigate = useNavigate();

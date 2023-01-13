@@ -7,31 +7,13 @@ import { IconClock } from '@tabler/icons';
 import { useFieldArray, useForm } from "react-hook-form"
 import { yupResolver } from '@hookform/resolvers/yup';
 import { TaskSchema as schema } from '../../assets/pattern/formPattern';
-import { shortDate, dayWeek, weekNumber } from '../../functions/date'
+import { shortDate, dayWeek, weekNumber } from '../../global/functions/date'
 import styles from "./AddTaskModalForm.module.css"
 import dayjs from 'dayjs';
 import InputField from '../Atoms/InputField/InputField';
+import TextareaField from '../Atoms/TextareaField/TextareaField';
 
 
-const useStyles = createStyles((theme) => ({
-  root: {
-    position: 'relative',
-  },
-
-  input: {
-    height: 'auto',
-    paddingTop: 18,
-  },
-
-  label: {
-    position: 'absolute',
-    pointerEvents: 'none',
-    fontSize: theme.fontSizes.xs,
-    paddingLeft: theme.spacing.sm,
-    paddingTop: theme.spacing.sm / 2,
-    zIndex: 1,
-  },
-}));
 
 
 const AddTaskModalForm = ({isOpen, onClose, onEventAdded, data}) => {
@@ -52,10 +34,11 @@ const AddTaskModalForm = ({isOpen, onClose, onEventAdded, data}) => {
     }  */
 
     console.log(data)
+    console.log({label : styles.label})
     return (
         <Modal isOpen={isOpen} onRequestClose={onClose} className={styles.modal}>
-        <InputField label="Tâche" placeholder="préparation vente"/>
-
+        <InputField label="Tâche" placeholder="préparation vente" hald={true}/>
+        <TextareaField label="Description" placeholder="Description de la tâche"/>
             {/* {data && <>
                         <p>WEEK : {weekNumber(data)}</p>
                         <p>DAY :  {dayWeek(data)}</p>

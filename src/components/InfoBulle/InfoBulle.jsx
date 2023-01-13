@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useRecoilState } from 'recoil'
-import { infoBulleState } from '../../Providers/infoBulle'
+import { infoBulleState } from '../../global/Providers/infoBulle'
 import styles from "./InfoBulle.module.css"
 
 const InfoBulle = ({msg, label}) => {

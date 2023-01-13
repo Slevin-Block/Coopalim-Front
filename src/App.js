@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Modal from 'react-modal'
 import './App.css';
 
@@ -7,15 +7,20 @@ import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Header from "./components/Header/Header";
 import Planning from "./components/Planning/Planning";
-import { useRecoilValue } from "recoil";
-import { infoBulleState } from "./Providers/infoBulle";
+import { useRecoilState } from "recoil";
+import { infoBulleState } from "./global/Providers/infoBulle";
 import InfoBulle from "./components/InfoBulle/InfoBulle";
+import { useUser } from './global/UseUser'
 
 Modal.setAppElement('#root')
 
 function App() {
+    const user = useUser(null)
+    const [infoBulle, setInfoBulle] = useRecoilState(infoBulleState)
+    useEffect(()=>{
+        user && setInfoBulle({open : true, msg : `Bienvenue ${user?.firstname}`})
+    }, [user])
 
-    const infoBulle = useRecoilValue(infoBulleState)
     return (
         <>
             {infoBulle?.open && <InfoBulle label={infoBulle.msg} />}

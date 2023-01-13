@@ -1,9 +1,0 @@
-@import '../../../assets/styleSystem/colors.css';
-@import '../../../assets/styleSystem/fonts.css';
-
-.p {
-    font : var(--error);
-    font-weight: bold;
-    color: var(--redError);
-    margin-top : 0;
-}

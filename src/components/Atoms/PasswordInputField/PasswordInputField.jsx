@@ -1,5 +1,4 @@
 import React from 'react'
-import styles from './PasswordInputField.module.css'
 import { PasswordInput } from '@mantine/core';
 import { IconKey, IconEyeCheck, IconEyeOff } from '@tabler/icons';
 import { useStyles } from './PasswordInputFieldStyle';

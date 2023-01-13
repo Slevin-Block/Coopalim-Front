@@ -1,15 +1,15 @@
 import React from 'react'
-import { useRecoilState } from 'recoil'
-import { infoBulleState } from '../../Providers/infoBulle'
-import TextField from '../Atoms/TextField/TextField'
+import { useRecoilValue, useRecoilState } from 'recoil'
+import { infoBulleState } from '../../global/Providers/infoBulle'
+import { userState } from '../../global/Providers/user'
 import TitleField from '../Atoms/TitleField/TitleField'
+import TextField from '../Atoms/TextField/TextField'
 import styles from './Home.module.css'
-import { useUser } from './UseUser'
 
 const Home = () => {
-    const user = useUser(null)
 
     const [, setInfoBulle] = useRecoilState(infoBulleState)
+    const user = useRecoilValue(userState)
     
     return (
         <>

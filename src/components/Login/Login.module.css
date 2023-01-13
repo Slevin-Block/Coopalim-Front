@@ -1,3 +1,10 @@
+.section {
+    position : relative;
+    flex-grow : 1;
+    height : 100%;
+}
+
+
 .form {
     display : flex;
     flex-direction: column;
@@ -14,11 +21,6 @@
     align-self: center;
 }
 
-.section {
-    position : relative;
-    height : 100%;
-    background-color: cadetblue;
-}
 
 .error {
     font : var(--error);

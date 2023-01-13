@@ -7,11 +7,11 @@ import { IconClock } from '@tabler/icons';
 import { useFieldArray, useForm } from "react-hook-form"
 import { yupResolver } from '@hookform/resolvers/yup';
 import { TaskSchema as schema } from '../../assets/pattern/formPattern';
-import { shortDate, dayWeek, weekNumber } from '../../functions/date'
+import { shortDate, dayWeek, weekNumber } from '../../Global/functions/date'
 import styles from "./AddTaskModalForm.module.css"
 import dayjs from 'dayjs';
-import InputField from '../Atoms/InputField/InputField';
-import TextareaField from '../Atoms/TextareaField/TextareaField';
+import InputField from '../../components/Atoms/InputField/InputField';
+import TextareaField from '../../components/Atoms/TextareaField/TextareaField';
 
 
 

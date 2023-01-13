@@ -15,15 +15,28 @@
     position : relative;
     top : 0.3rem;
     background-color : var(--primary) ;
-    border-radius: 0.2rem;
+    border-radius: 0.4rem 1.2rem 0.4rem;
     animation : 3s appear forwards;
+    line-height: 100%;
 }
 
 @keyframes appear {
-  0% { opacity : 0}
-  25% { opacity : 0.9 }
-  75% { opacity : 0.9 }
-  to   { opacity : 0 }
+  0%    {      
+            opacity : 0;
+            transform : translateY(-3rem);
+        }
+  25%   {      
+            opacity : 0.9;
+            transform : translateY(0);
+        }
+  75%   {      
+            opacity : 0.9;
+            transform : translateY(0);
+        }
+  to   {      
+            opacity : 0.9;
+            transform : translateY(-3rem);
+        }
 }
 
 .label{

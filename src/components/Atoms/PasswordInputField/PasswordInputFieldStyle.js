@@ -1,5 +1,5 @@
 import { createStyles } from '@mantine/core';
-import { getInCss } from '../../../functions/getInCss';
+import { getInCss } from '../../../global/functions/getInCss';
 
 export const useStyles = createStyles(() => ({
     
