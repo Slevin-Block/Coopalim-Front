@@ -1,0 +1,33 @@
+.group{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.group button{
+    width : 7rem;
+}
+
+.important{
+    font: var(--text);
+    font-weight: 900;
+}
+
+.buttonWarning{
+    background-color: var(--redCoopalim);
+}
+
+.buttonWarning:hover{
+    filter: brightness(1.1)
+}
+
+.groupModal{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin-left : 1.2rem;
+}
+.groupModal p {
+    margin-left : 1rem;
+}

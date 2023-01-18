@@ -1,0 +1,6 @@
+.error {
+    font : var(--error);
+    font-weight: bold;
+    color: var(--redError);
+    margin : 0;
+}

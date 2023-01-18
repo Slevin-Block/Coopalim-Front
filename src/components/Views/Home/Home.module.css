@@ -1,0 +1,36 @@
+.section {
+    position: relative;
+    display : flex;
+    flex-direction: column;
+    align-items : center;
+    min-height : 100%;
+    width : 80vw;
+}
+
+
+.core{
+    color : var(--text) ;
+    height : 100%;
+    width : inherit;
+}
+
+.list {
+    display : flex;
+    flex-direction: column;
+    flex-grow : 1;
+    justify-content: space-evenly;
+    text-align: center;
+    height : 100%;
+}
+
+.group{
+    border-radius: 1rem 3rem 1rem;
+    background-color: var(--onBackground);
+    padding : 1.5rem;
+}
+
+.link{
+    font : var(--text);
+    color : var(--redCoopalim);
+    text-decoration : none;
+}

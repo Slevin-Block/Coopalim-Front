@@ -27,11 +27,11 @@ const fetcher = async (path, method, body = null, token = null) => {
     try {
         const res = await fetch(`${baseURL}${path}`, options)
         obj.status = res.status
-        if (obj.status === 200) {
+        if (parseInt(obj.status / 10) === 20) {
             obj.data = await res.json()
             obj.ok = true
         }else{
-            obj.data = null
+            obj.data = await res.json()
             obj.ok = false
         }
     }catch(err){

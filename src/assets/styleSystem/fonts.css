@@ -27,5 +27,5 @@
     --information : italic 1rem "Source", sans-serif;
     --error : italic 1rem "Source", sans-serif;
     --field : 0.9rem "Source", sans-serif;
-    --labelField : normal 0.9rem "Source", sans-serif;
+    --label : normal 0.9rem "Source", sans-serif;
 }

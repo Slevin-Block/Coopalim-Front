@@ -1,0 +1,44 @@
+.group{
+    display : flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top : 0;
+}
+
+.group > *{
+    cursor: pointer;
+}
+
+.groupmax{
+    justify-content: space-between;
+}
+
+.label{
+    font : var(--label);
+    font-weight: bold;
+    margin-bottom : 0.4rem;
+}
+
+.info{
+    color : var(--blueCoopalim);
+    border : 1px solid var(--blueCoopalim);
+    border-radius: 0.3rem;
+    width : 5em;
+    margin : 0;
+    padding : 0.2rem;
+    text-align: center;
+}
+
+.info p {
+    font : var(--information);
+    font-weight: 900;
+    margin : 0;
+}
+
+.selected{
+    color : var(--background);
+    border : 1px solid var(--blueCoopalim);
+    border-radius: 0.3rem;
+    background-color: var(--blueCoopalim);
+}

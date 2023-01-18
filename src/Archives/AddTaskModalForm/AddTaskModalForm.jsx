@@ -10,7 +10,7 @@ import { TaskSchema as schema } from '../../assets/pattern/formPattern';
 import { shortDate, dayWeek, weekNumber } from '../../global/functions/date'
 import styles from "./AddTaskModalForm.module.css"
 import dayjs from 'dayjs';
-import InputField from '../Atoms/InputField/InputField';
+import Input from '../Atoms/Input/Input';
 import TextareaField from '../Atoms/TextareaField/TextareaField';
 
 
@@ -37,7 +37,7 @@ const AddTaskModalForm = ({isOpen, onClose, onEventAdded, data}) => {
     console.log({label : styles.label})
     return (
         <Modal isOpen={isOpen} onRequestClose={onClose} className={styles.modal}>
-        <InputField label="Tâche" placeholder="préparation vente" hald={true}/>
+        <Input label="Tâche" placeholder="préparation vente" hald={true}/>
         <TextareaField label="Description" placeholder="Description de la tâche"/>
             {/* {data && <>
                         <p>WEEK : {weekNumber(data)}</p>

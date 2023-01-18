@@ -16,5 +16,5 @@
     top : 0.8rem;
     pointer-events: none;
     z-index: 1;
-    font : var(--labelField)
+    font : var(--label)
 };

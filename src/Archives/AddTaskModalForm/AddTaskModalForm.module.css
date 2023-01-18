@@ -50,7 +50,7 @@
 }
 
 .field label {
-    font : var(--labelField);
+    font : var(--label);
 }
 
 .attribution{

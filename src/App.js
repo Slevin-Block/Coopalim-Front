@@ -1,25 +1,28 @@
 import React, { useEffect } from "react"
-import Modal from 'react-modal'
-import './App.css';
-
 import { Routes, Route} from "react-router-dom";
-import Home from "./components/Home/Home";
-import Login from "./components/Login/Login";
-import Header from "./components/Header/Header";
-import Planning from "./components/Planning/Planning";
 import { useRecoilState } from "recoil";
+
+import Modal from 'react-modal'
 import { infoBulleState } from "./global/Providers/infoBulle";
-import InfoBulle from "./components/InfoBulle/InfoBulle";
-import { useUser } from './global/UseUser'
+import { useLoader } from './global/UseLoader'
+
+import Home from "./components/Views/Home/Home";
+import Login from "./components/Views/Login/Login";
+import Header from "./components/Views/Header/Header";
+import Planning from "./components/Views/Planning/Planning";
+import InfoBulle from "./components/Atoms/InfoBulle/InfoBulle";
+import Signup from "./components/Views/Signup/Signup";
+import Users from "./components/Views/Users/Users";
 
 Modal.setAppElement('#root')
 
 function App() {
-    const user = useUser(null)
+    const {isLoading} = useLoader()
     const [infoBulle, setInfoBulle] = useRecoilState(infoBulleState)
+
     useEffect(()=>{
-        user && setInfoBulle({open : true, msg : `Bienvenue ${user?.firstname}`})
-    }, [user])
+        isLoading && setInfoBulle({open : true, msg : `Connection établie`})
+    }, [isLoading])
 
     return (
         <>
@@ -32,6 +35,8 @@ function App() {
                     <Route path='/' element={<Home />} />
                     <Route path='/calendar' element={<Planning />} />
                     <Route path='/login' element={<Login />} />
+                    <Route path='/signup' element={<Signup />} />
+                    <Route path='/users' element={<Users />} />
                 </Routes>
             </main>
         </>

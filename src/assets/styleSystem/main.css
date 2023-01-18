@@ -1,0 +1,37 @@
+@import './colors.css';
+@import './fonts.css';
+
+
+:root{
+    --heightMenu : 8vh;
+}
+
+body {
+    top : 0;
+    left : 0;
+    padding : 0;
+    margin: 0;
+    background-color: var(--background);
+    width: 100vw;
+    height: 100vh;
+}
+
+header {
+    position : fixed;
+    height : var(--heightMenu);
+    width: 100vw;
+    z-index: 2;
+}
+
+main {
+    position : relative;
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: calc(100vh - var(--heightMenu));
+    padding-top : var(--heightMenu);
+    box-sizing: content-box;
+    overflow: hidden;
+    z-index: 0;
+}

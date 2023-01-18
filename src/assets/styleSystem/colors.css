@@ -2,8 +2,8 @@
     --primary : #8FB54E; /* Vert Coopalim */
 	--secondary : #BCD76C; /*Vert Prairie*/
     --background : #fbfbf9; /* Blanc cassé */
-    --onBackground : #C8C9C8; /* Blanc cassé plus sombre */
-    --text : #4D4D4D; /* Gris Coopalim */
+    --onBackground : #eeeeee; /* Blanc cassé plus sombre */
+    --colorText : #4D4D4D; /* Gris Coopalim */
     --onText : #070707; /* Gris Coopalim foncé */
 
     --blueCoopalim : #0092B4; /* Bleu */
