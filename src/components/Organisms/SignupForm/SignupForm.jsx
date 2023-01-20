@@ -100,7 +100,7 @@ const SignupForm = ({defaultValues, editMode}) => {
                         <>
                             <Title level={2} >Attributions et Rôle</Title>
 
-                            <Select            label="Rôle :"
+                            <Select                 label="Rôle :"
                                                     placeholder={`Choisir un rôle`}
                                                     defaultValue = {getValues("rule")}
                                                     data={rules}

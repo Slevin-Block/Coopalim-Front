@@ -1,12 +1,23 @@
 import styled from "@emotion/styled";
+import { getInCss } from "../../../global/functions/getInCss";
+
+
+export const P = styled.p`
+    color : ${getInCss('--onBackground')};
+    font-family : ${getInCss('--basic')};
+    font-size: 0.8rem;
+`
 
 
 export const MyIndicator = styled.div`
     position :absolute;
-    width : ${props => props?.size}px;
-    height : ${props => props?.size}px;
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    width : ${props => props?.width}px;
+    height : ${props => props?.height}px;
     background-color: ${props => props?.color};
-    border-radius: 50%;
+    border-radius: 0.5rem;
 
 
     ${props => (props?.position === 'tr' ||
@@ -42,7 +53,6 @@ export const MyIndicator = styled.div`
         top : calc(50% - ( ${props?.size}px / 2 ));
         right : ${props?.offset}px;
     `}
-
     ${props => props?.position === 'TR' && `
         top : calc( 0% + ${props?.offset}% - (${props?.size}px / 2));
         right : calc( 0% + ${props?.offset}% - (${props?.size}px / 2));
@@ -59,4 +69,5 @@ export const MyIndicator = styled.div`
         bottom : calc( 0% + ${props?.offset}% - (${props?.size}px / 2));
         left : calc( 0% + ${props?.offset}% - (${props?.size}px / 2));
     `}
+
 `

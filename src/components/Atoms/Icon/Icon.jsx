@@ -1,33 +1,48 @@
 import React from 'react'
-import { IconThermometer, IconHome, IconLogin, IconLogout, IconUserPlus, IconCalendar, IconAlertCircle, IconUser, IconUsers,IconPhone, IconMail, IconLetterCase, IconLetterCaseUpper, IconMapPin, IconQuestionMark, IconCreditCard, IconDeviceDesktopAnalytics, IconTrash, IconEdit, IconAlertTriangle } from '@tabler/icons';
+import {IconThermometer, IconHome, IconLogin, IconLogout, IconUserPlus, IconCalendar,
+        IconAlertCircle, IconUser, IconUsers,IconPhone, IconMail, IconLetterCase,
+        IconLetterCaseUpper, IconMapPin, IconQuestionMark, IconCreditCard,
+        IconDeviceDesktopAnalytics, IconTrash, IconEdit, IconAlertTriangle,
+        IconBoxMultiple,
+        IconPrompt,
+        IconClock,
+        IconCalendarEvent,
+        IconPlus,
+        IconMinus} from '@tabler/icons';
 
 import PropTypes from 'prop-types';
-import { getInCss } from '../../../global/functions/getInCss';
 
 const ToggleIconStep = {
-        'thermometer' : IconThermometer,
-        'Thermomètre' : IconThermometer,
-        'home' : IconHome,
-        'login' : IconLogin,
-        'logout' : IconLogout,
-        'calendar' : IconCalendar,
-        'info' : IconAlertCircle,
-        'user' : IconUser,
-        'users' : IconUsers,
-        'signup' : IconUserPlus,
-        'phone' : IconPhone,
-        'mail' : IconMail,
-        'firstname' : IconLetterCase,
-        'lastname' : IconLetterCaseUpper,
         'address' : IconMapPin,
-        'default' : IconQuestionMark,
         'badge' : IconCreditCard,
         'Badge' : IconCreditCard,
+        'calendar' : IconCalendar,
+        'clock' : IconClock,
+        'day' : IconCalendarEvent,
+        'default' : IconQuestionMark,
         'delete' : IconTrash,
+        'detail' : IconPrompt,
         'edit' : IconEdit,
-        'software' : IconDeviceDesktopAnalytics,
+        'firstname' : IconLetterCase,
+        'home' : IconHome,
+        'info' : IconAlertCircle,
+        'lastname' : IconLetterCaseUpper,
         'Logiciel' : IconDeviceDesktopAnalytics,
+        'login' : IconLogin,
+        'logout' : IconLogout,
+        'mail' : IconMail,
+        'minus' : IconMinus,
+        'phone' : IconPhone,
+        'plus' : IconPlus,
+        'signup' : IconUserPlus,
+        'software' : IconDeviceDesktopAnalytics,
+        'task' : IconBoxMultiple,
+        'thermometer' : IconThermometer,
+        'Thermomètre' : IconThermometer,
+        'user' : IconUser,
+        'users' : IconUsers,
         'warning' : IconAlertTriangle,
+
     }
 
 const propTypes = {

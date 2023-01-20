@@ -18,17 +18,16 @@ const Login = () => {
         defaultValues: { login: 'Fanny', password: 'azeAZE123$' },
         resolver: yupResolver(schema)
     })
-    
+    console.log(errors?.login?.message)
+    console.log(errors?.password?.message)
     return (
         <>
             <Title >Identification</Title>
             <section className={styles.section}>
                 <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-                    <Input label='Login :' register={register} handleChange={handleChange} field="login" icon="user" error={errors.login} tooltipLabel="Nom d'utilisateur"/>
-                    {errors?.login?.message && <p className={styles.error}>{errors?.login?.message}</p>}
+                    <Input label='Login :' register={register} handleChange={handleChange} field="login" icon="user" error={errors?.login?.message} tooltipLabel="Nom d'utilisateur"/>
 
-                    <PasswordInput label='Mot de passe :' register={register} field="password" error={errors.password}/>
-                    {errors?.password?.message && <p className={styles.error}>{errors?.password?.message}</p>}
+                    <PasswordInput label='Mot de passe :' register={register} field="password" error={errors?.password?.message}/>
 
                     <Button type="submit" name='send' >Envoyer</Button>
                 </form>

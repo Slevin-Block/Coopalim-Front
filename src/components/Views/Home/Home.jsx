@@ -10,6 +10,8 @@ import { getInCss } from '../../../global/functions/getInCss'
 import { rulesState } from '../../../global/Providers/rules'
 import Button from '../../Atoms/Button/Button'
 import { infoBulleState } from '../../../global/Providers/infoBulle'
+import Counter from '../../Atoms/Counter/Counter'
+import TimeSelect from '../../Atoms/TimeSelect/TimeSelect'
 
 const Home = () => {
     const user = useRecoilValue(userState)
@@ -25,9 +27,9 @@ const Home = () => {
                 {user ?
                     <>
                         <Text >{`Le nom de l'utilisateur en cours est : ${user.login}`}</Text>
-                        <Text >{`${Object.keys(user).map((key) => user[key]).join(" ")}`}</Text>
+                        {/* <Text >{`${Object.keys(user).map((key) => user[key]).join(" ")}`}</Text> */}
 
-                        {rules.filter(rule => ['Coordinateur'].includes(rule.label)).map(rule => rule._id).includes(user.rule)  &&
+                        {rules && rules.filter(rule => ['Coordinateur'].includes(rule.label)).map(rule => rule._id).includes(user.rule)  &&
                             <div className={styles.group}>
                                 <Title level={3}>Menu rapide</Title>
                                 <Link className={styles.link} to='/signup'>{'Créer un compte '}<Icon field='signup' color={getInCss('--redCoopalim')} /></Link>
@@ -49,8 +51,19 @@ const Home = () => {
                         </>
                 }
 
-                
-                
+
+                <TimeSelect 
+                    label='Heure de début'
+                    field='startTime'
+                    defaultValue={new Date(2018, 0, 1, 11, 15)}
+                    getValue={(time => console.log(time))}
+                />
+
+                {/* 
+                    Pour charger les hours dans la bonne date utiliser les méthodes :
+                        time.setHours(time2.getHours())     // pour les heures
+                        time.setMinutes(time2.getMinutes()) // pour les heures
+                 */}
             </section>
             
             

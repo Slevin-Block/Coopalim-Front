@@ -27,23 +27,23 @@ export const useSignup = () => {
     
     if (rules && attributions) {
         if (state){
+            // In Edit Mode
             defaultValues = {
                                 ...state,
                                 rule:           rules?.find(rule => rule._id === state.rule),
                                 attributions :  attributions.map(att => {return {...att, check : state.attributions.includes(att._id) ? true : false}}),
                             }
         }else{
+            // In Create Mode
             defaultValues = {
                                 attributions :  attributions.map(att => {return {...att, check : false}}),
                                 isAutonomous :  false,
                             }
         }
     }else{
+        // If Error
         defaultValues = null
     }
 
-   
-    
-    console.log(defaultValues)
     return {defaultValues, editMode}
 }

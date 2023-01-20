@@ -1,5 +1,6 @@
 import React from 'react'
-import { MyIndicator } from './Indicator.styled'
+import { MyIndicator, P } from './Indicator.styled'
+
 
 
 /**
@@ -7,9 +8,17 @@ import { MyIndicator } from './Indicator.styled'
  * offset : valeur (+ far away)
  * @returns 
  */
-const Indicator = ({color = 'red', size = 7, position='tr', offset = 8}) => {
+const Indicator = ({color = "red", size = 10, position='tr', offset = 3,  label, disabled = false }) => {
+    let width = size;
+    let height = size;
+    if (label){
+        width *= 2;
+        height *= 1.6;
+    }
     return (
-        <MyIndicator color={color} size={size} position={position} offset={offset}></MyIndicator>
+        <>
+            {!disabled && <MyIndicator color={color} position={position} width={width} height={height} offset={offset}><P>{label}</P></MyIndicator>}
+        </>
     )
 }
 

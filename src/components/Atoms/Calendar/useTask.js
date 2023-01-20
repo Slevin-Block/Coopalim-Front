@@ -1,21 +1,14 @@
 import dayjs from "dayjs"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { useRecoilValue } from "recoil"
 import useSWR from 'swr'
 import fetcher from "../../../global/functions/fetcher"
 import { sessionState } from "../../../global/Providers/session"
 
-export const useTask = () => {
-    const session = useRecoilValue(sessionState)
-    const {data, mutate} = useSWR('/tasks',(url) => fetcher(url, 'GET', null, session?.token))
 
-    useEffect(() => {
-        if (data?.status === 400) mutate()
-    }, [session])
-
-
-    const sendTask = async(day) => {
-        const task = {  
+export const taskExample = (day) => {
+        return {  
             label : "Test",
             
             description : "Oh my Godness",
@@ -29,12 +22,48 @@ export const useTask = () => {
 
             particiaptors :      [],
 
-            isNotUrgent : true,
-        }
-        const res = await fetcher('/tasks', 'POST', task, session?.token)
+            isUrgent : true,
+        }}
+
+export const useTask = () => {
+    const session = useRecoilValue(sessionState)
+    const navigate = useNavigate()
+
+    // Current month and year
+    const [month, onMonthChange] = useState(new Date());
+    const refMonthYearObj = (date) => { return {month : dayjs(date).month(), year : dayjs(date).year()} }
+    const monthObj = refMonthYearObj(month)
+
+    // Use useSWRInfinite will be better ... but how ... see (https://swr.vercel.app/docs/pagination#useswrinfinite)
+    const {data, mutate} = useSWR([`/tasks?month=${monthObj.month}&year=${monthObj.year}`, 'GET', null, session?.token],
+                                ([url, method, payload, token]) => fetcher(url, method, payload, token), {revalidateOnFocus : false})
+
+    useEffect(() => {
+        if (data?.status === 400) mutate()
+        if (session === null) navigate('/')
+    }, [session])
+
+    // Store day, occurancy of each and compile isUrgent
+    const tasks = data?.status === 200 ?  data?.data
+                    .filter(task => dayjs(task.startTime).month() === dayjs(month).month())
+                    .map(task => {return {day : dayjs(task.startTime).date(), isUrgent : task.isUrgent, qty : 1}})
+                    .flatMap((task, i, tasks) => {
+                        if(i > 0 && tasks.slice(0, i).map(t => t.day).includes(task.day)) return []
+                        const arr = tasks.filter(t => t.day === task.day)
+                        const obj = {...task}
+                        obj.month = monthObj.month
+                        obj.qty = arr.length
+                        obj.isUrgent = arr.reduce((a,b) => a && b.isUrgent, true)
+                        return {...obj}
+                    })
+                    : []
+
+
+    const sendTask = async(day) => {
+        const res = await fetcher('/tasks', 'POST', taskExample(day), session?.token)
         mutate()
         console.log(res)
     }
 
-    return {tasks : data?.status === 200 ? data?.data : null,sendTask}
+    return { month, onMonthChange, tasks, sendTask, }
 }

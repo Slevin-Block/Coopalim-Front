@@ -1,8 +1,11 @@
 import React from 'react'
+import { LoadingOverlay } from '@mantine/core';
 
-const Loader = () => {
+const Loader = ({visible}) => {
     return (
-        <div>Loader</div>
+        <div>
+            <LoadingOverlay visible={visible} overlayBlur={2} />
+        </div>
     )
 }
 

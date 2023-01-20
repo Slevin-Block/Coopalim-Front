@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-import { useStyles } from './InputStyle'
-import styles from './Input.module.css'
+import { useStyles, Error } from './MantineInputStyle'
 import { TextInput, Tooltip  } from '@mantine/core';
 import Icon from '../Icon/Icon';
 import { IconAlertCircle } from '@tabler/icons';
@@ -11,20 +10,19 @@ import { IconAlertCircle } from '@tabler/icons';
 
 
 
-const Input = ({ label, placeholder, classNames : extClasse, tooltipLabel = "", register, field, icon : ic = null, error = ''}) => {
+const Input = ({ label, placeholder, tooltipLabel = "", value, register = () => {}, field = "", icon : ic = null, error}) => {
     const { classes } = useStyles();
-    const [myStyle] = useState(extClasse ? `${classes} ${extClasse}` : classes)
 
     return (
         <div>
             <TextInput
-                
-                icon={<Icon field={ic} />}
+                value = {value}
+                icon={!!ic && <Icon field={ic} />}
                 label={label}
                 name={field}
                 placeholder={placeholder}
                 {...register(field)}
-                classNames={myStyle}
+                classNames={classes}
                 rightSection={ tooltipLabel &&
                     <>
                         <Tooltip label={tooltipLabel} position="top-end" withArrow>
@@ -35,7 +33,7 @@ const Input = ({ label, placeholder, classNames : extClasse, tooltipLabel = "", 
                     </>
                 }
             />
-            {error && <p className={styles.error}>{error}</p>}
+            {error && <Error>{error}</Error>}
         </div>
     )
 }

@@ -35,9 +35,11 @@ const fetcher = async (path, method, body = null, token = null) => {
             obj.ok = false
         }
     }catch(err){
-        obj.data = null
+        obj.status = 502
+        obj.data = undefined
         obj.ok = false
     }
+    /* console.log('from fetcher : ', obj) */
     return obj
 }
 

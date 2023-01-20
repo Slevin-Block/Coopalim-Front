@@ -21,12 +21,14 @@ export const refreshLogin = async () => {
     if (!refreshToken){
         return null
     }
+
     res = await fetcher('/authorization', 'GET', null, refreshToken);
     if (res.ok){
         localStorage.setItem('COOPALIM - TM', JSON.stringify(res.data.refreshToken));
-        return {user : res.data.user, token : res.data.accessToken}
+        const data = {user : res.data.user, token : res.data.accessToken}
+        return {...res, data}
     }else{
-        return null
+        return res
     }
 }
 

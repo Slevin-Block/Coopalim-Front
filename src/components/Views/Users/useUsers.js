@@ -11,7 +11,8 @@ export const useUsers = () => {
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(true)
     const session = useRecoilValue(sessionState)
-    const {data, mutate} = useSWR('/users',(url) => fetcher(url, 'GET', null, session?.token))
+    const {data, mutate} = useSWR(  ['/users', 'GET', null, session?.token],
+                                    ([url, method, payload, token])=> fetcher(url, method, payload, token))
 
     useEffect(() => {
         if (session) {
@@ -36,6 +37,5 @@ export const useUsers = () => {
         }
     }
 
-    
     return {isLoading, action, data}
 }

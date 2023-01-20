@@ -1,4 +1,5 @@
-import { createStyles } from '@mantine/core';
+import styled from "@emotion/styled";
+import { Center, createStyles } from '@mantine/core';
 import { getInCss } from '../../../global/functions/getInCss';
 
 export const useStyles = createStyles(() => ({
@@ -13,4 +14,15 @@ export const useStyles = createStyles(() => ({
     input :{
         borderColor : getInCss("--blueCoopalim"),
     }
+    
 }));
+
+
+
+
+export const Error = styled.p`
+    font : var(--error);
+    font-weight: bold;
+    color: var(--redError);
+    margin : 0;
+`
