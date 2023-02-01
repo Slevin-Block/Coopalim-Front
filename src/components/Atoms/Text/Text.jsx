@@ -1,9 +1,9 @@
 import React from 'react'
 import { MyText } from './Text.styled'
 
-const Text = ({children, type, color}) => {
+const Text = ({children, type, color, className}) => {
     return (
-        <MyText type={type} color={color}>{children}</MyText>
+        <MyText type={type} color={color} className={className} >{children}</MyText>
     )
 }
 

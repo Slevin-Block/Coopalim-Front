@@ -10,11 +10,14 @@ import { IconAlertCircle } from '@tabler/icons';
 
 
 
-const Input = ({ label, placeholder, tooltipLabel = "", value, register = () => {}, field = "", icon : ic = null, error}) => {
+const Input = ({ label, placeholder, tooltipLabel = "", value, register = () => {}, field = "", icon : ic = null, error, className, disabled = false, trigger}) => {
     const { classes } = useStyles();
+    const handleChange = (e) => {
+        trigger && trigger(field)
+    }
 
     return (
-        <div>
+        <div className={className}>
             <TextInput
                 value = {value}
                 icon={!!ic && <Icon field={ic} />}
@@ -23,7 +26,9 @@ const Input = ({ label, placeholder, tooltipLabel = "", value, register = () => 
                 placeholder={placeholder}
                 {...register(field)}
                 classNames={classes}
-                rightSection={ tooltipLabel &&
+                disabled = {disabled}
+                onChange={handleChange}
+                rightSection={ (tooltipLabel && !disabled) &&
                     <>
                         <Tooltip label={tooltipLabel} position="top-end" withArrow>
                             <div>
@@ -33,7 +38,7 @@ const Input = ({ label, placeholder, tooltipLabel = "", value, register = () => 
                     </>
                 }
             />
-            {error && <Error>{error}</Error>}
+            {(error) && <Error>{error}</Error>}
         </div>
     )
 }

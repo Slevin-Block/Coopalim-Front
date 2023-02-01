@@ -5,7 +5,6 @@ export const login = async (payload) => {
         console.log("Bad identification payload to login")
         return
     }
-    /* console.log('trying login') */
     let res = await fetcher('/login', 'POST', payload)
     if (res.ok){
         localStorage.setItem('COOPALIM - TM', JSON.stringify(res.data.refreshToken));

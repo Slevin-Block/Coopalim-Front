@@ -1,12 +1,5 @@
 import env from "react-dotenv";
-/**
- * 
- * @param {*} path 
- * @param {*} method 
- * @param {*} body 
- * @param {*} token 
- * @returns 
- */
+
 const fetcher = async (path, method, body = null, token = null) => {
     const baseURL = env.API_URL
     const options = {}
@@ -39,7 +32,6 @@ const fetcher = async (path, method, body = null, token = null) => {
         obj.data = undefined
         obj.ok = false
     }
-    /* console.log('from fetcher : ', obj) */
     return obj
 }
 

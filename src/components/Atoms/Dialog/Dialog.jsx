@@ -1,6 +1,6 @@
 import React from 'react'
 import { Dialog as MantineDialog} from '@mantine/core';
-import { Group, GroupModal } from './Dialog.styled';
+import { Label, Control } from './Dialog.styled';
 import { Overlay } from '@mantine/core';
 import Text from '../Text/Text';
 import Button from '../Button/Button';
@@ -22,9 +22,11 @@ const Dialog = ({isOpen, needConfirmation, data}) => {
                 
                 {!savedAction ?
                     <>
-                        <Text >{data.label}</Text>
+                        <Label>
+                            <Text >{data.label}</Text>
+                        </Label>
 
-                        <Group>
+                        <Control>
                             <Button onClick={() => onClose()} >Annuler</Button>
                             {data.actions.map((action, i) => <Button key={i}
                                                                         color ={action.color}
@@ -33,23 +35,23 @@ const Dialog = ({isOpen, needConfirmation, data}) => {
                                                                         }}
                                                             >{action.label}</Button>
                             )}
-                        </Group>
+                        </Control>
                     </>
                 :
                     <>
-                        <GroupModal>
+                        <Label>
                             <Icon field="warning" color={getInCss('--redCoopalim')} size={40}/>
                             <Text type='important'>{`Confirmation : ${savedAction.label}`}</Text>
-                        </GroupModal>
+                        </Label>
 
-                        <Group>
+                        <Control>
                             <Button color={getInCss("--redCoopalim")}
                                          onClick={() => {
                                             setConfirmed(true)
                                          }}
                             >{savedAction.label}</Button>
                             <Button onClick={() => onClose()} >Annuler</Button>
-                        </Group>
+                        </Control>
                     </>
                 }
             </MantineDialog>

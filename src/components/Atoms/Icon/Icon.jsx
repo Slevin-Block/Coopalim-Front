@@ -3,17 +3,16 @@ import {IconThermometer, IconHome, IconLogin, IconLogout, IconUserPlus, IconCale
         IconAlertCircle, IconUser, IconUsers,IconPhone, IconMail, IconLetterCase,
         IconLetterCaseUpper, IconMapPin, IconQuestionMark, IconCreditCard,
         IconDeviceDesktopAnalytics, IconTrash, IconEdit, IconAlertTriangle,
-        IconBoxMultiple,
-        IconPrompt,
-        IconClock,
-        IconCalendarEvent,
-        IconPlus,
-        IconMinus} from '@tabler/icons';
+        IconBoxMultiple, IconPrompt, IconClock, IconCalendarEvent, IconPlus,
+        IconMinus, IconSearch, IconLetterA, IconLetterN, IconLoader,
+        IconThumbUp, IconThumbDown, IconSettings, IconTools, IconChevronLeft, IconChevronRight}
+        from '@tabler/icons';
 
 import PropTypes from 'prop-types';
 
-const ToggleIconStep = {
+export const ToggleIconStep = {
         'address' : IconMapPin,
+        'autonomous' : IconLetterA,
         'badge' : IconCreditCard,
         'Badge' : IconCreditCard,
         'calendar' : IconCalendar,
@@ -22,19 +21,27 @@ const ToggleIconStep = {
         'default' : IconQuestionMark,
         'delete' : IconTrash,
         'detail' : IconPrompt,
+        'dislike' : IconThumbDown,
         'edit' : IconEdit,
         'firstname' : IconLetterCase,
         'home' : IconHome,
         'info' : IconAlertCircle,
         'lastname' : IconLetterCaseUpper,
+        'left' : IconChevronLeft,
+        'like' : IconThumbUp,
+        'loader' : IconLoader,
         'Logiciel' : IconDeviceDesktopAnalytics,
         'login' : IconLogin,
         'logout' : IconLogout,
         'mail' : IconMail,
         'minus' : IconMinus,
+        'novice' : IconLetterN,
         'phone' : IconPhone,
         'plus' : IconPlus,
+        'right' : IconChevronRight,
         'signup' : IconUserPlus,
+        "search" : IconSearch,
+        "settings" : IconTools,
         'software' : IconDeviceDesktopAnalytics,
         'task' : IconBoxMultiple,
         'thermometer' : IconThermometer,
@@ -42,6 +49,8 @@ const ToggleIconStep = {
         'user' : IconUser,
         'users' : IconUsers,
         'warning' : IconAlertTriangle,
+        'wheel' : IconSettings,
+
 
     }
 
@@ -54,11 +63,14 @@ const propTypes = {
  * @param {*} param0 
  * @returns 
  */
-const Icon = ({field : step = 'default', color = '#aeb6be', size}) => {
-    const Component = ToggleIconStep[step ? step : 'default']
+const Icon = ({field : step = 'default', color = '#aeb6be', size, className}) => {
+
+    let Component
+    if (Object.keys(ToggleIconStep).includes(step)) Component = ToggleIconStep[step]
+    else                                            Component = ToggleIconStep['default']
     
     return (
-        <Component color={color} size={size}/>
+        <Component color={color} size={size} className={className} />
     )
 }
 

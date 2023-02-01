@@ -1,10 +1,8 @@
 import styled from "@emotion/styled";
-import { getInCss } from "../../../global/functions/getInCss";
-
 
 export const P = styled.p`
-    color : ${getInCss('--onBackground')};
-    font-family : ${getInCss('--basic')};
+    color : var(--onBackground);
+    font-family : var(--basic);
     font-size: 0.8rem;
 `
 

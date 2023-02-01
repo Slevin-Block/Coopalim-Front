@@ -2,7 +2,7 @@ import React from 'react'
 import { PasswordInput as MantinePasswordInput} from '@mantine/core';
 import { IconKey, IconEyeCheck, IconEyeOff } from '@tabler/icons';
 import { useStyles } from './PasswordInputStyle';
-import styles from './PasswordInput.module.css'
+import { Error } from './Error.styled';
 
 const PasswordInput = ({ label, placeholder, register, field, error}) => {
     const { classes } = useStyles()
@@ -20,7 +20,7 @@ const PasswordInput = ({ label, placeholder, register, field, error}) => {
                 }
                 classNames={classes}
             />
-            {error && <p className={styles.error}>{error}</p>}
+            {error && <Error>{error}</Error>}
         </div>
     )
 }

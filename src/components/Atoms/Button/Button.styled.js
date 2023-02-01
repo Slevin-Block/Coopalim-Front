@@ -1,13 +1,12 @@
 import styled from '@emotion/styled';
 import { Button as MantineButton} from '@mantine/core';
-import { getInCss } from '../../../global/functions/getInCss';
 
 export const MyButton = styled(MantineButton)`
     min-width : 100%;
-    background-color : ${props => props.color ? props.color : getInCss("--blueCoopalim")};
+    background-color : ${props => props.color ? props.color : `var(--blueCoopalim)`};
 
         &:hover  {
-            background-color : ${props => props.color ? props.color : getInCss("--blueCoopalim")};
+            background-color : ${props => props.color ? props.color : `var(--blueCoopalim)`};
             filter: brightness(1.1);
         }
     margin : 0 ;
@@ -20,7 +19,7 @@ export const MyBox = styled.div`
     display :flex;
     align-items : center;
     justify-content : center;
-    width : 7rem;
+    ${props => !props.small && `width : 6.3rem;`}
     padding : 0;
     margin : 0;
 

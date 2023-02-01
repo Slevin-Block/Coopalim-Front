@@ -7,7 +7,7 @@ import Text from '../Text/Text';
 
 
 
-export const Counter = ({ label = "", min = 0, max = 10, defaultValue, field = "", onChange}) => {
+export const Counter = ({ label = "", min = 0, max = 10, defaultValue, field = "", onChange, className, disabled}) => {
     const { classes } = useStyles();
     const [value, setValue] = useState(defaultValue || min);
 
@@ -20,33 +20,34 @@ export const Counter = ({ label = "", min = 0, max = 10, defaultValue, field = "
     useEffect(() => {onChange && onChange(value)} ,[value])
 
     return (
-        <>
+        <div className={className}>
             <div className={classes.global}>
                 <Text type='label'>{label}</Text>
                 <div className={classes.wrapper}>
-                    <ActionIcon size={28} variant="transparent" className={classes.control}
+                    {!disabled && <ActionIcon size={24} variant="transparent" className={classes.control}
                         onClick={() => handleChange(value-1)}
                         disabled={value === min}
                         onMouseDown={(e) => e.preventDefault()}
                     >
                         <Icon field='minus' size={16} />
                     </ActionIcon>
-
+                    }
                     <TextInput  name={field} value={value} onChange={(e) => handleChange(e.target.value) }
                           classNames={{ input: classes.input }}
+                          disabled={disabled}
                     />
 
-                    <ActionIcon size={28} variant="transparent" className={classes.control}
+                    {!disabled && <ActionIcon size={24} variant="transparent" className={classes.control}
                         onClick={() => handleChange(value+1)}
                         disabled={value === max}
                         onMouseDown={(e) => e.preventDefault()}
                     >
                         <Icon field='plus' size={16} />
                     </ActionIcon>
-
+                    }
                 </div>
             </div>
-        </>
+        </div>
 
     );
 }

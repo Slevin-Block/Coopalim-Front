@@ -2,10 +2,9 @@ import React, { useEffect } from 'react'
 import { useRecoilState } from 'recoil'
 import { infoBulleState } from '../../../global/Providers/infoBulle'
 import Text from '../Text/Text'
-import { MyInfoBulle } from './InfoBule.styled'
-import styles from "./InfoBulle.module.css"
+import { MyInfoBulle } from './InfoBulle.styled'
 
-const InfoBulle = ({label}) => {
+const InfoBulle = ({label, warning = false}) => {
     const [, setInfoBulle] = useRecoilState(infoBulleState)
     useEffect(() =>{
 
@@ -15,7 +14,7 @@ const InfoBulle = ({label}) => {
         return () => clearInterval(interval);
     })
     return (
-        <MyInfoBulle >
+        <MyInfoBulle warning={warning} >
                 <Text type="infoBulle">{label}</Text>
         </MyInfoBulle>
     )

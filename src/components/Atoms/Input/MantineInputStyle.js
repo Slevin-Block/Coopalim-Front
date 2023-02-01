@@ -1,19 +1,23 @@
 import styled from "@emotion/styled";
-import { Center, createStyles } from '@mantine/core';
-import { getInCss } from '../../../global/functions/getInCss';
+import { createStyles } from '@mantine/core';
 
 export const useStyles = createStyles(() => ({
     
-   
+    input :{
+
+        border: '1px solid #ced4da',
+
+        '&:focus' : {
+            borderColor : `var(--blueCoopalim)`,
+        },
+    },
+
     label : {
         paddingBottom : '0.3rem',
-        font : getInCss("--label"),
+        font : `var(--label)`,
         fontWeight : 'bold',
     },
 
-    input :{
-        borderColor : getInCss("--blueCoopalim"),
-    }
     
 }));
 

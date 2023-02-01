@@ -1,28 +1,29 @@
-import React, { useState, useEffect } from 'react'
-import { useStyles } from './SelectStyle'
-import { Select as MantineSelect} from '@mantine/core';
+import React, { useState } from 'react'
+import { MySelect } from './Select.styled';
 
 
-const Select = ({ label, placeholder, data, classNames : extClasse, getValue, defaultValue}) => {
-    const { classes } = useStyles();
+const Select = ({ label = '', placeholder, data = [], setValue, defaultValue = null, className, clearable = false}) => {
+
     
-    const [value, setValue] = useState(defaultValue || data[0])
-    const [myStyle] = useState(extClasse ? `${classes} ${extClasse}` : classes)
+    const [value, onChange] = useState(defaultValue)
     
-    const handleChange = (value) => { setValue(data.find(opt => opt.label === value)) }
-    useEffect(()=>{ getValue && getValue(value) },[value])
-
+    const handleChange = (value) => {
+        const temp = data.find(opt => opt.label === value)
+        setValue(temp)
+        onChange(temp)
+    }
 
     return (
-        <MantineSelect
-            value={value.label}            
-            style={{ marginTop: 20, zIndex: 2 }}
-            data={data.map(value => value.label)}
-            placeholder={placeholder}
-            label={label}
-            classNames={myStyle}
-            onChange={handleChange}
-        />
+        <div className={className}>
+            <MySelect
+                value={value?.label}
+                data={data?.map(value => value?.label)}
+                placeholder={placeholder}
+                label={label}
+                clearable = {clearable}
+                onChange={handleChange}
+            />
+        </div>
     )
 }
 

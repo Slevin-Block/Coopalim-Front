@@ -1,20 +1,22 @@
 import { createStyles } from '@mantine/core';
-import { getInCss } from '../../../global/functions/getInCss';
 
 export const useStyles = createStyles(() => ({
     
     'root' : {
-        color : getInCss("--redCoopalim"),
+        color : `var(--redCoopalim)`,
     },
     
     label : {
         paddingBottom : '0.3rem',
-        font : getInCss("--label"),
+        font : `var(--label)`,
         fontWeight : 'bold',
     },
 
     input :{
-        borderColor : getInCss("--blueCoopalim"),
+        borderColor : '#ced4da',
+        '&:focus': {
+            backgroundColor: `var(--blueCoopalim)`,
+        },
     }
 
 }));

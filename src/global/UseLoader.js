@@ -1,13 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useRecoilState } from 'recoil'
 import { sessionState } from './Providers/session'
 import { refreshLogin } from './API/connection'
 import { rulesState } from './Providers/rules'
-import { readRules } from './API/rules'
 import { attributionsState } from './Providers/attributions'
-import { readAttributions } from './API/attributions'
 import { loadingState } from './Providers/Loading'
-import { infoBulleState } from './Providers/infoBulle'
 import useSWR from 'swr'
 import fetcher from './functions/fetcher'
 
@@ -20,10 +17,9 @@ export const useLoader = () => {
 
     // Mirors 
     const [isLoading, setIsLoading] = useRecoilState(loadingState)
-    const [session, setSession] = useRecoilState(sessionState)
-    const [rules, setRules] = useRecoilState(rulesState)
-    const [attributions, setAttributions] = useRecoilState(attributionsState)
-    const [, setInfoBulle] = useRecoilState(infoBulleState)
+    const [, setSession] = useRecoilState(sessionState)
+    const [, setRules] = useRecoilState(rulesState)
+    const [, setAttributions] = useRecoilState(attributionsState)
 
     // If SWR find a session or if the refreshLogin process is unsuccessful
     useEffect(() => {
@@ -47,12 +43,5 @@ export const useLoader = () => {
     // Attributions Provider Link
     useEffect(() => { setAttributions(attributionsFetched?.data) },[attributionsFetched])
 
-    /* console.log("-------CONNECTION--------")
-    console.log("auth : ", auth)
-    console.log("status : " + auth?.status)
-    console.log("SESSION : ", session)
-    console.log("RULES : ", rules)
-    console.log("ATTRIBUTIONS : ", attributions)
-    console.log("------------------------") */
     return {isLoading}
 }

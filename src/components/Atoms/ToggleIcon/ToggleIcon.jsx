@@ -5,12 +5,18 @@ import { Tooltip } from '@mantine/core';
 import { Box } from './Toggle.styled';
 
 
-const ToggleIcon = ({ field = 'default', defaultValue = false, desactived = false, small = false,
+const ToggleIcon = ({ field = 'default', icon, defaultValue = false, disabled, small = false,
                            globalValue, tooltip, onChange }) => {
 
     const [toggle, setToggle] = useState(defaultValue)
-    const color = toggle ? getInCss('--background') : getInCss('--blueCoopalim')
-    const handleToggle = () => !desactived && setToggle(!toggle)
+    let color
+    if (toggle){
+        color = disabled ? '#f6f7f8' : getInCss('--background')
+    }else {
+        color = getInCss('--blueCoopalim')
+    }
+
+    const handleToggle = () => !disabled && setToggle(!toggle)
 
     useEffect(() => onChange && onChange({...globalValue, check : toggle})
               ,[toggle])
@@ -18,8 +24,8 @@ const ToggleIcon = ({ field = 'default', defaultValue = false, desactived = fals
     return (
         <>
             <Tooltip label={tooltip} disabled={!tooltip}>
-                <Box label={tooltip} small={small} disabled={desactived} toggle={toggle} onClick={handleToggle}>
-                    <Icon field={field} color={color}/>
+                <Box label={tooltip} small={small} disabled={disabled} toggle={toggle} onClick={handleToggle}>
+                    <Icon field={icon} color={color}/>
                 </Box>
             </Tooltip>
         </>

@@ -1,21 +1,27 @@
-import React from 'react'
-import { DatePicker as MantineDatePicker} from '@mantine/dates';
+import React, { useState, useEffect } from 'react'
 import Icon from '../Icon/Icon';
 import { Tooltip } from '@mantine/core';
 import { IconAlertCircle } from '@tabler/icons';
 import 'dayjs/locale/fr';
+import { MyDatePicker } from './MantineDatePickerStyle'
 
-const DatePicker = ({label, register, field, placeholder, tooltipLabel, defaultValue, error, fixedDay}) => {
-    console.log(fixedDay)
+const DatePicker = ({label, placeholder, tooltipLabel, setValue, defaultValue, fixedDay, className, disabled}) => {
+
+    const [value, onChange] = useState(new Date(defaultValue));
+    useEffect(() =>{ setValue && setValue(value) }, [value])
+
     return (
-        <MantineDatePicker
+        <MyDatePicker
+            className={className}
             locale="fr"
             label={label}
             placeholder={placeholder}
-            {...register(field)}
-            icon={<Icon field={'clock'} />}
-            defaultValue={defaultValue}
+            icon={<Icon field={'calendar'} />}
+            value={value}
+            onChange={onChange}
+            inputFormat="DD MMMM YYYY"
             clearable
+            disabled={disabled}
             excludeDate={(date) => fixedDay ? date.getDay() !== fixedDay : false}
             rightSection={ tooltipLabel &&
                     <>
